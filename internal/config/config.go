@@ -10,6 +10,7 @@ import (
 // TenantBasePath Default value
 var (
 	TenantBasePath = "./sites"
+	WPCorePath     = "./wp-core"
 )
 
 // LoadConfig loads .env based on GO_ENV (local, docker, production)
@@ -40,5 +41,11 @@ func LoadConfig() {
 	if val := os.Getenv("TENANT_PATH"); val != "" {
 		TenantBasePath = val
 		log.Println("Tenant base path:", TenantBasePath)
+	}
+
+	// Path to WP Core
+	if val := os.Getenv("WP_CORE_PATH"); val != "" {
+		WPCorePath = val
+		log.Println("WP core path:", WPCorePath)
 	}
 }
